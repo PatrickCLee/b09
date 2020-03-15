@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -17,6 +18,7 @@ import java.io.InputStreamReader;
 public class MainActivity extends AppCompatActivity {
     private SharedPreferences sp;
     private SharedPreferences.Editor editor;
+    private Button test5, test6; //所有看得到的東東都是View,但宣告為何,可用的method會不同,視情況宣告
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,9 @@ public class MainActivity extends AppCompatActivity {
 
         sp = getSharedPreferences("config",MODE_PRIVATE);//自己命名,其實是存成檔案(檔名為此處命名)裡面存資料
         editor = sp.edit();
+        test5 = findViewById(R.id.test5);
+        test6 = findViewById(R.id.test6);
+
     }
 
     public void test1(View view) {
@@ -70,5 +75,16 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             Log.v("brad", e.toString());
         }
+    }
+
+    public void test56(View view) {
+        Button btn = (Button)view;
+        Log.v("brad", btn.getText().toString() + " first line");
+        if (view == test5){
+            Log.v("brad","test5");
+        }else if(view == test6){
+            Log.v("brad","test6");
+        }
+
     }
 }
