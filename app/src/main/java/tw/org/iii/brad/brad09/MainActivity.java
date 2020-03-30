@@ -43,13 +43,14 @@ public class MainActivity extends AppCompatActivity {
         boolean sound = sp.getBoolean("sound",true);
         int stage = sp.getInt("stage",1);
         String username = sp.getString("username","nobody");
-        Toast.makeText(this,username +":"+ stage +":"+ sound,Toast.LENGTH_SHORT).show();
+        String amIRight = sp.getString("amIRight","HELLYEAH!"); //沒有put進資料中
+        Toast.makeText(this,username +":"+ stage +":"+ sound + ":" + amIRight,Toast.LENGTH_SHORT).show();
     }
 
     public void test3(View view) {
         try {
 //            Log.v("brad","test3");
-            FileOutputStream fout = openFileOutput("brad.txt",MODE_PRIVATE);
+            FileOutputStream fout = openFileOutput("brad.txt",MODE_APPEND);
             fout.write("Hello, World.\n1234567\nabcdggg".getBytes());
             fout.flush();
             Toast.makeText(this,"Save OK",Toast.LENGTH_SHORT).show();
@@ -71,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 sb.append(line + "\n");
             }
             fin.close();
-            Toast.makeText(this,sb,Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,sb,Toast.LENGTH_LONG).show();
         } catch (Exception e) {
             Log.v("brad", e.toString());
         }
